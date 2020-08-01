@@ -21,8 +21,8 @@
 #define TOP_STATE_CTOR(__dev__) \
 		HsmCtor((Hsm *)me, "top", (EvtHndlr)__dev___##top)
 
-#define STATE_CTOR(__state__) \
-		StateCtor(&me->__state__,(const char*) __state__ , &((Hsm *)me)->top, (EvtHndlr)__state__)
+#define STATE_CTOR(__state_child__, __state_parent__) \
+		StateCtor(&me->__state_child__,(const char*) __state_child__ , &((Hsm *)me)->__state_parent__, (EvtHndlr)__state_child__)
 
 #define HSM_DISPATCH(__dev__) \
 		HsmOnEvent((Hsm *)&__dev__, &__dev__.msg)

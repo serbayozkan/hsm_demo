@@ -77,9 +77,12 @@ STATE_HANDLER(hsm_blink_t, led_on) {
 
 void hsm_blink_init(hsm_blink_t *me)
 {
+	// Create Top State
 	TOP_STATE_CTOR(hsm_blink_t);
-	STATE_CTOR(led_off);
-	STATE_CTOR(led_on);
+
+	// Create Child States
+	STATE_CTOR(led_off, top);
+	STATE_CTOR(led_on, top);
 }
 
 int main() {
